@@ -1,7 +1,8 @@
 import { FC, useMemo, useState } from "react";
 import { providers } from "data/providers";
 import { ParamBunny, ParamScaleway } from "types/types";
-import { chartInputWidth, minPrice, setPriceByGB } from "utils/utils";
+import { chartInputSize, minPrice, setPriceByGB } from "utils/utils";
+import useResize from "hooks/useResize";
 import "./Chart.css";
 
 interface ChartProps {
@@ -12,6 +13,8 @@ interface ChartProps {
 const Chart: FC<ChartProps> = ({ storage, transfer }) => {
   const [paramBunny, setParamBunny] = useState<ParamBunny>("HDD");
   const [paramScaleway, setParamScaleway] = useState<ParamScaleway>("Multi");
+
+  const windowWidth = useResize();
 
   const backblazePrice = useMemo(() => {
     const price = 0.005 * storage + 0.01 * transfer;
@@ -45,7 +48,7 @@ const Chart: FC<ChartProps> = ({ storage, transfer }) => {
     <div className="chart">
       {providers.map((provider, i) => (
         <div className="chart__item" key={i}>
-          <div>
+          <div className="chart__dataContainer">
             <p>{provider.name}</p>
 
             {provider.params && (
@@ -71,15 +74,19 @@ const Chart: FC<ChartProps> = ({ storage, transfer }) => {
               </p>
             )}
           </div>
+          
+          <img src={provider.logo} alt={provider.name} className='chart__logo'/>
 
           <input
             type="range"
             className={`chart__input ${
               minPrice(prices[i], prices) ? "min" : ""
             }`}
-            style={{
-              width: `${chartInputWidth(prices[i], prices)}%`,
-            }}
+            style={
+              windowWidth > 768
+                ? { width: `${chartInputSize(prices[i], prices)}%` }
+                : { height: `${chartInputSize(prices[i], prices)}%` }
+            }
             max={Math.max(...prices)}
           />
 

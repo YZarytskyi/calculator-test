@@ -6,7 +6,7 @@ export const minPrice = (price: number, prices: number[]) => {
   return false;
 };
 
-export const chartInputWidth = (price: number, prices: number[]) =>
+export const chartInputSize = (price: number, prices: number[]) =>
   (price * 100) / Math.max(...prices);
 
 export const setPriceByGB = (value: number) => (value > 75 ? value - 75 : 0);

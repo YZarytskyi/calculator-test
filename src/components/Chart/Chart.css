@@ -5,7 +5,7 @@
 .chart__item {
   position: relative;
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 80px 40px 1fr;
   align-items: center;
   gap: 20px;
 }
@@ -24,8 +24,18 @@
   color: rgb(0, 160, 85);
 }
 
+.chart__dataContainer p {
+  text-transform: capitalize;
+}
+
+.chart__logo {
+  width: 40px;
+  height: 40px;
+}
+
 .chart__input {
   height: 30px;
+  width: 30px;
   background: rgb(99, 99, 99);
   appearance: none;
   transition: 0.3s;
@@ -48,4 +58,43 @@
   margin: 0;
   font-weight: 600;
   transform: translateY(-53%);
+}
+
+
+@media screen and (max-width: 768px) {
+  .chart {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+  }
+  .chart__dataContainer {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+  }
+  .chart__item {
+    display: grid;
+    grid-template-columns: unset;
+    grid-template-rows: 30px 150px 50px 60px;
+    gap: 10px;
+    align-items: flex-end;
+    justify-items: center;
+    grid-auto-flow: dense;
+  }
+  .chart__dataContainer p {
+    margin: 3px;
+  }
+  .chart__input {
+    grid-row: 2;
+  }
+  .chart__price {
+    position: static;
+    grid-row: 1;
+  }
+  .chart__logo {
+    width: 30px;
+    height: 30px;
+    grid-row: 3;
+    
+  }
 }

@@ -7,6 +7,8 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   padding: 10px 30px;
   border-radius: 10px;
@@ -16,4 +18,22 @@
 .ranges {
   display: flex;
   gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 10px 30px;
+    border-radius: unset;
+    border: none;
+  }
+  .ranges {
+    order: 2;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .chart {
+    order: 1;
+  }
 }
