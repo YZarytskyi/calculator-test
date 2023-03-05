@@ -1,0 +1,12 @@
+.range {
+  width: 50%;
+}
+
+.range__label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.range__input {
+  width: 100%;
+}
