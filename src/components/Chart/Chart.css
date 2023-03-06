@@ -36,13 +36,8 @@
 .chart__input {
   height: 30px;
   width: 30px;
-  background: rgb(99, 99, 99);
   appearance: none;
   transition: 0.3s;
-}
-
-.chart__input.min {
-  background: rgb(0, 160, 85);
 }
 
 .chart__input::-webkit-slider-thumb {
@@ -60,12 +55,10 @@
   transform: translateY(-53%);
 }
 
-
 @media screen and (max-width: 768px) {
   .chart {
     display: flex;
-    justify-content: center;
-    gap: 50px;
+    justify-content: space-around;
   }
   .chart__dataContainer {
     display: flex;
